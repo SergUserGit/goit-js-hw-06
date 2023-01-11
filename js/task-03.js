@@ -20,7 +20,9 @@ for (const img of images) {
 }
 
 const galleryList = document.querySelector(".gallery");
-galleryList.style.display = "flex";
-galleryList.style.gap = "30px";
+const galleryListStyle = galleryList.style;
+galleryListStyle["list-style"] = "none";
+galleryListStyle.display = "flex";
+galleryListStyle.gap = "30px";
 
 galleryList.insertAdjacentHTML("afterbegin", textMurkup);
