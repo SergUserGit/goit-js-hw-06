@@ -20,9 +20,5 @@ for (const img of images) {
 }
 
 const galleryList = document.querySelector(".gallery");
-const galleryListStyle = galleryList.style;
-galleryListStyle["list-style"] = "none";
-galleryListStyle.display = "flex";
-galleryListStyle.gap = "30px";
 
 galleryList.insertAdjacentHTML("afterbegin", textMurkup);
