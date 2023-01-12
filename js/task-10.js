@@ -1,7 +1,3 @@
-//function getRandomHexColor() {
-//  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-//}
-
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
     .toString(16)
@@ -22,15 +18,45 @@ function onCreateBtnClick() {
 
   const inputValueNumber = Number.parseInt(inputValue);
 
-  console.log(!inputValueNumber);
-
-  console.log(typeof inputValueNumber);
+  if (!inputValueNumber) {
+    alert("Потрібно вибрати значення від 1 !");
+  } else {
+    createBoxes(inputValueNumber);
+  }
 }
 
 function onDestroyBtnClick() {
-  alert("Удаление");
+  destroyBoxes();
 }
 
 function createBoxes(amount) {
-  for (let i = 0; i <= amount; i += 1) {}
+  destroyBoxes();
+
+  const divBoxes = document.querySelector("#boxes");
+  const masElem = [];
+
+  let elGeometry = 30;
+
+  for (let i = 1; i <= amount; i += 1) {
+    const colorValue = getRandomHexColor();
+    const newElem = document.createElement("div");
+    const newElemStyle = newElem.style;
+
+    newElemStyle.backgroundColor = colorValue;
+    newElemStyle.width = String(elGeometry) + "px";
+    newElemStyle.height = String(elGeometry) + "px";
+
+    masElem.push(newElem);
+
+    elGeometry += 10;
+  }
+
+  divBoxes.append(...masElem);
+}
+
+function destroyBoxes() {
+  const newElemets = document.querySelectorAll("#boxes > div");
+  for (const element of newElemets) {
+    element.remove();
+  }
 }
